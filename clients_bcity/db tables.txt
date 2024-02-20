@@ -1,0 +1,23 @@
+DROP TABLE IF EXISTS contacts;
+CREATE TABLE clients (
+  id int(11) PRIMARY KEY
+  , name varchar(255)
+  , lname varchar(255)
+  , email varchar(255)
+);
+
+DROP TABLE IF EXISTS clients;
+CREATE TABLE clients (
+  id int(11) PRIMARY KEY
+  , name varchar(255)
+  , acro_char varchar(255)
+);
+
+DROP TABLE IF EXISTS client_contact;
+CREATE TABLE client_contact (
+  client_id int(11)
+  , contact_id int(11)
+  , FOREIGN KEY (client_id) REFERENCES clients(id)
+  , FOREIGN KEY (contact_id) REFERENCES contacts(id)
+  , PRIMARY KEY (client_id, contact_id)
+);
